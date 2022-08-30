@@ -1,0 +1,10 @@
+version: "3"
+services:
+    wso2-api-manager:
+        image: "wso2/wso2am:4.1.0"
+        hostname: "wso2-api-manager"
+        ports:
+            - "9443:9443"
+            - "8243:8243"
+            - "8280:8280"
+        restart: "always"
