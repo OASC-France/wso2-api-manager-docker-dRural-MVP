@@ -7,4 +7,6 @@ services:
             - "9443:9443"
             - "8243:8243"
             - "8280:8280"
+        volumes :
+            - "./wso2am-4.1.0/repository/conf/deployment.toml:/home/wso2carbon/wso2am-4.1.0/repository/conf/deployment.toml"
         restart: "always"
