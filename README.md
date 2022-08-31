@@ -25,7 +25,7 @@ sudo docker run -d wso2/wso2am:4.1.0
 
 > Take note of the container identifier.
 
-> Wait 5 minutes for the container to be fully started.
+> Wait 5 minutes for the api manager to be fully started.
 
 Copy the api manager directory
 
