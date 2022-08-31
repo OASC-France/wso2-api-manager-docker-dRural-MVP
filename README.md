@@ -68,6 +68,20 @@ websub_event_receiver_https_endpoint = "https://example.com:8021"
 url = "https://example.com:${mgt.transport.https.port}/devportal"
 ```
 
+#### Customization of the developer portal logo
+
+wso2am-4.1.0/repository/deployment/server/jaggeryapps/devportal/site/public/theme/userTheme.js
+
+```js
+const Configurations = {
+    custom: {
+        appBar: {
+            logo: 'https://example.com/logo.png',
+        },
+    },
+};
+```
+
 ### Usage
 
 #### Start the api manager
