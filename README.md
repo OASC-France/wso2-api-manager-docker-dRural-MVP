@@ -84,6 +84,10 @@ docker-compose down
 
 ### Endpoints
 
+#### Gateway
+
+https://example.com:8243
+
 #### Publisher
 
 https://example.com:9443/publisher
@@ -92,7 +96,7 @@ https://example.com:9443/publisher
 
 https://example.com:9443/devportal
 
-> If you have not defined the certificates for the HTTPS protocol and you want to try an api via the developer portal, you will first have to manually access the gateway (https://example.com:8243) via your web browser and acknowledge the warning message.
+> If you have not defined the certificates for the HTTPS protocol and you want to try an api via the developer portal, you will first have to manually access the gateway endpoint via your web browser and acknowledge the warning message.
 
 #### Management Console
 
