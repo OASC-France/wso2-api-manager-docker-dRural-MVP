@@ -87,13 +87,13 @@ const Configurations = {
 #### Start the api manager
 
 ```
-docker-compose up -d
+sudo docker compose up -d
 ```
 
 #### Stop the api manager
 
 ```
-docker-compose down
+sudo docker compose down
 ```
 
 ### Endpoints
