@@ -98,6 +98,8 @@ docker-compose down
 
 ### Endpoints
 
+> The ports must be open on the machine to be able to access it from outside.
+
 #### Gateway
 
 https://example.com:8243
