@@ -49,6 +49,8 @@ sudo chown 802:802 -R ./wso2am-4.1.0
 
 ##### Set up Apache as reverse proxy and configure HTTPS
 
+> WSO2 API Manager does not seem to be designed to easily choose which ports to use, and it is not clear how to import your own HTTPS certificates. That's why in this example we will use a reverse proxy and the default ports. In order not to create a conflict with Docker ports, we increment each port transferred from the Docker container by 10. Example: You call https://example.com:9443/publisher, the reverse proxy redirects you to https://localhost:9453/publisher.
+
 Install Apache
 
 ```
