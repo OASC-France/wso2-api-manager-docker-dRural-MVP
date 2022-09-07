@@ -4,9 +4,9 @@ services:
         image: "wso2/wso2am:4.1.0"
         hostname: "wso2-api-manager"
         ports:
-            - "9443:9443"
-            - "8243:8243"
-            - "8280:8280"
+            - "9453:9443"
+            - "8253:8243"
+            - "8290:8280"
         volumes :
             - "./wso2am-4.1.0:/home/wso2carbon/wso2am-4.1.0"
         restart: "always"

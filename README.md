@@ -45,7 +45,114 @@ Define the api manager user as owner of the entire wso2am-4.1.0 directory
 sudo chown 802:802 -R ./wso2am-4.1.0
 ```
 
-#### Set api manager hostname
+#### Set the hostname and configure HTTPS (using Apache as reverse proxy)
+
+##### Set up Apache as reverse proxy and configure HTTPS
+
+Install Apache
+
+```
+sudo apt install apache2
+```
+
+Disable default virtual hosts
+
+```
+sudo a2dissite 000-default
+sudo a2dissite default-ssl
+```
+
+Create virtual host
+
+/etc/apache2/sites-available/example.com.conf
+
+```
+<VirtualHost *:80>
+    ServerName example.com
+
+    ProxyPreserveHost On
+
+    SSLProxyEngine on
+    SSLProxyVerify none
+    SSLProxyCheckPeerCN off
+    SSLProxyCheckPeerName off
+    SSLProxyCheckPeerExpire off
+
+    ProxyPass / https://localhost:9453/
+    ProxyPassReverse / https://localhost:9453/
+</VirtualHost>
+```
+
+Enable virtual host
+
+```
+sudo a2ensite example.com
+```
+
+Listen for port 9443
+
+/etc/apache2/ports.conf
+
+```
+Listen 9443
+```
+
+Enable required modules
+
+```
+sudo a2enmod ssl
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod proxy_ajp
+sudo a2enmod rewrite
+sudo a2enmod deflate
+sudo a2enmod headers
+sudo a2enmod proxy_balancer
+sudo a2enmod proxy_connect
+sudo a2enmod proxy_html
+```
+
+Restart Apache
+
+```
+sudo service apache2 restart
+```
+
+Install [Certbot](https://certbot.eff.org/instructions?ws=apache&os=debianbuster)
+
+Run Certbot
+
+```
+sudo certbot --apache
+```
+
+Disable HTTP virtual host
+
+```
+sudo a2dissite example.com
+```
+
+Change HTTPS port from 443 to 9443
+
+> Please note the "-le-ssl" file name suffix
+
+/etc/apache2/sites-available/example.com-le-ssl.conf
+
+```
+…
+<VirtualHost *:9443>
+…
+```
+
+Restart Apache
+
+```
+sudo service apache2 restart
+```
+
+> If necessary, this operation can be repeated for the gateway, with the internal port 8290 and external 8280.
+
+##### Set the hostname
 
 wso2am-4.1.0/repository/conf/deployment.toml
 
@@ -57,12 +164,8 @@ hostname = "example.com"
 …
 service_url = "https://example.com:${mgt.transport.https.port}/services/"
 …
-ws_endpoint = "ws://example.com:9099"
-wss_endpoint = "wss://example.com:8099"
 http_endpoint = "http://example.com:${http.nio.port}"
 https_endpoint = "https://example.com:${https.nio.port}"
-websub_event_receiver_http_endpoint = "http://example.com:9021"
-websub_event_receiver_https_endpoint = "https://example.com:8021"
 …
 [apim.devportal]
 url = "https://example.com:${mgt.transport.https.port}/devportal"
