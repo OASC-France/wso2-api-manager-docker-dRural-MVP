@@ -152,7 +152,7 @@ Restart Apache
 sudo service apache2 restart
 ```
 
-> This operation can be repeated for the gateway, with the internal port 8290 (with http so without SSLProxyEngine commands) and external 8280.
+> This operation can be repeated for the gateway.
 
 ##### Set the hostname
 
