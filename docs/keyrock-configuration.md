@@ -36,6 +36,8 @@ Create a new identity provider (Identity Providers > Add)
 
 <img src="../images/api-manager/identity-provider/oauth2-openid-connect-configuration.png" alt="OAuth2/OpenID Connect Configuration" width="600"/>
 
+> For **Token Endpoint URL** and **Userinfo Endpoint URL**, use url of the proxy of Keyrock.
+
 **Just-in-Time Provisioning**
 
 <img src="../images/api-manager/identity-provider/just-in-time-provisioning.png" alt="Just-in-Time Provisioning" width="600"/>
@@ -51,10 +53,6 @@ Edit **apim_publisher**
 **Local & Outbound Authentication Configuration**
 
 <img src="../images/api-manager/service-providers/local-outbound-authentication-configuration.png" alt="Local & Outbound Authentication Configuration" width="600"/>
-
-### Roles
-
-Create roles (Users and Roles > Add > Add New Role)
 
 ### Configuration file
 
